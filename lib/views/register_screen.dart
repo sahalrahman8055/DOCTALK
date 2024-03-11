@@ -1,10 +1,15 @@
 import 'package:doctalk/views/bottom_screen.dart';
-
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  final Function()? onTap;
+  const RegisterScreen({super.key, required this.onTap});
 
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,17 +81,39 @@ class RegisterScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Are you a User ?..",
+                style: TextStyle(color: Colors.white),
+              ),
+              const SizedBox(width: 20),
+              GestureDetector(
+                onTap: widget.onTap,
+                child: const Text(
+                  "Tap to Login",
+                  style: TextStyle(color: Color.fromARGB(255, 5, 110, 196)),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
             height: 40,
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const BottomScreen(),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BottomScreen(),
+                ),
+              );
             },
             style: ElevatedButton.styleFrom(
+              shadowColor: Colors.black,
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius:
@@ -95,7 +122,10 @@ class RegisterScreen extends StatelessWidget {
             ),
             child: const Text(
               'Register',
-              style: TextStyle(color: Color.fromRGBO(76, 195, 123, 1.0)),
+              style: TextStyle(
+                color: Color.fromRGBO(76, 195, 123, 1.0),
+                fontSize: 20,
+              ),
             ),
           ),
         ],

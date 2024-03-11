@@ -1,3 +1,5 @@
+import 'package:doctalk/views/login_screen.dart';
+import 'package:doctalk/views/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class LOginOrRegister extends StatefulWidget {
@@ -8,12 +10,22 @@ class LOginOrRegister extends StatefulWidget {
 }
 
 class _LOginOrRegisterState extends State<LOginOrRegister> {
-  bool showLoginPages = true;
+  bool showLoginPage = true;
 
-  void tougglepage() {}
+  void togglepages() {
+    setState(() {
+      showLoginPage = !showLoginPage;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    if (showLoginPage) {
+      return LoginScreen(onTap: togglepages);
+    } else {
+      return RegisterScreen(
+        onTap: togglepages,
+      );
+    }
   }
 }

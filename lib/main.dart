@@ -1,3 +1,4 @@
+import 'package:doctalk/views/login_or_register.dart';
 import 'package:doctalk/views/login_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const LoginScreen());
+        home: LOginOrRegister());
   }
 }
